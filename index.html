@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>jera's website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-black: #0f0f0f;
+      --color-blue: #6399ef; /* Tailwind blue-500 */
+      --color-blue-dark: #6893ef; /* Tailwind blue-600 */
+    }
+    body {
+      background: linear-gradient(135deg, var(--color-black) 50%, var(--color-blue-dark) 50%);
+      font-family: 'Inter', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Zoom animation for content */
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .zoom-animation {
+      animation: zoomIn 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    /* For active nav button */
+    .nav-btn-active {
+      color: var(--color-blue);
+      font-weight: 700;
+      border-bottom: 3px solid var(--color-blue);
+    }
+    /* custom scrollbar for dark */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-blue);
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 bg-black/90 backdrop-blur-md z-50">
+    <nav class="container mx-auto max-w-6xl flex items-center justify-between py-4 px-6">
+      <div class="text-2xl font-extrabold tracking-wide select-none cursor-default text-blue-500">
+        My Profile
+      </div>
+      <ul class="flex space-x-8 text-white text-lg font-semibold" role="menubar" aria-label="Main Navigation">
+        <li><button class="nav-btn focus:outline-none focus:ring-2 focus:ring-blue-500" data-target="home" role="menuitem" aria-current="page">Home</button></li>
+        <li><button class="nav-btn focus:outline-none focus:ring-2 focus:ring-blue-500" data-target="about" role="menuitem">About Me</button></li>
+        <li><button class="nav-btn focus:outline-none focus:ring-2 focus:ring-blue-500" data-target="contact" role="menuitem">Contact</button></li>
+        <li><button class="nav-btn focus:outline-none focus:ring-2 focus:ring-blue-500" data-target="projects" role="menuitem">My Projects</button></li>
+        <li><button class="nav-btn focus:outline-none focus:ring-2 focus:ring-blue-500" data-target="achievements" role="menuitem">Achievements</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow container max-w-6xl mx-auto px-6 pt-12 pb-24" role="main">
+    <!-- Sections -->
+
+    <!-- Home Section -->
+    <section id="home" class="section grid grid-cols-1 md:grid-cols-2 items-center gap-12 zoom-animation" tabindex="0" aria-label="Home Section">
+      <!-- Intro left side -->
+      <div class="space-y-6 max-w-xl">
+        <h1 class="text-5xl font-extrabold text-blue-500 leading-tight select-text">Hi, I'm Jera</h1>
+        <p class="text-lg text-gray-300 font-medium">Welcome to my portfolio! I'm a passionate student from STI and a future web designer.</p>
+      </div>
+      <!-- Picture right side -->
+      <div class="flex justify-end">
+        <img src="https://scontent.fmnl8-5.fna.fbcdn.net/v/t39.30808-6/504868722_1278157470542393_2036203306547375950_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE1gl_WwXkjX7DsqOELyDVQ2h-g0wqA1vraH6DTCoDW-lsIr-vbe6LU1Agc4u4OTlMyN6AEp83cx_wY1xyZlBcX&_nc_ohc=5x2fsPusDyYQ7kNvwFIH-QX&_nc_oc=Adm2PwlxAc0us15PfrmIqPPbhSvCMN_nUA0cGekoLFkjvnfPQXRgXjBykVjSbHfdu6w&_nc_zt=23&_nc_ht=scontent.fmnl8-5.fna&_nc_gid=obZ3sVPQ0HzShsPcF6kv7Q&oh=00_AfO1VczmEZZYwWo1bwVpaydvzPDJhI53EcDWHSlLdpxbLw&oe=68496903" alt="Adrian's portrait" class="rounded-full w-56 h-56 object-cover border-4 border-blue-500 shadow-lg" />
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section hidden space-y-8 max-w-xl mx-auto zoom-animation" tabindex="0" aria-label="About Me Section">
+      <h2 class="text-4xl font-extrabold text-blue-500 mb-8 select-text text-center">About Me</h2>
+      <ul class="space-y-4 text-lg text-gray-300">
+        <li><span class="font-semibold text-blue-400">Birthday:</span> Feb 19, 2002</li>
+        <li><span class="font-semibold text-blue-400">City:</span> Paranaque Sucat</li>
+        <li><span class="font-semibold text-blue-400">Age:</span> 23</li>
+        <li><span class="font-semibold text-blue-400">Phone:</span> 09948762463</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section hidden max-w-xl mx-auto space-y-8 zoom-animation" tabindex="0" aria-label="Contact Section">
+      <h2 class="text-4xl font-extrabold text-blue-500 mb-8 select-text text-center">Contact</h2>
+     <form class="space-y-6" onsubmit="sendViaGmail(event)">
+        <div>
+          <label for="name" class="block text-gray-300 font-semibold mb-2">Name</label>
+          <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-md bg-black bg-opacity-50 border border-blue-500 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your Name"/>
+        </div>
+        <div>
+          <label for="email" class="block text-gray-300 font-semibold mb-2">Email</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-md bg-black bg-opacity-50 border border-blue-500 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="you@example.com"/>
+        </div>
+        <div>
+          <label for="message" class="block text-gray-300 font-semibold mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 rounded-md bg-black bg-opacity-50 border border-blue-500 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message here..."></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 transition-colors duration-300 text-black font-semibold rounded-md px-6 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400">Send</button>
+      </form>
+    </section>
+
+    <!-- My Projects Section -->
+    <section id="projects" class="section hidden max-w-6xl mx-auto space-y-8 zoom-animation" tabindex="0" aria-label="My Projects Section">
+      <h2 class="text-4xl font-extrabold text-blue-500 mb-8 select-text text-center">My Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Sample project cards -->
+        <article class="bg-black bg-opacity-70 rounded-xl p-6 shadow-lg hover:scale-[1.03] transition-transform duration-300 cursor-pointer">
+          <h3 class="text-blue-400 font-semibold mb-2">Project 1</h3>
+          <p class="text-gray-300">Nothing to show yet.</p>
+        </article>
+        <article class="bg-black bg-opacity-70 rounded-xl p-6 shadow-lg hover:scale-[1.03] transition-transform duration-300 cursor-pointer">
+          <h3 class="text-blue-400 font-semibold mb-2">Project 2</h3>
+          <p class="text-gray-300">Nothing to show yet.</p>
+        </article>
+        <article class="bg-black bg-opacity-70 rounded-xl p-6 shadow-lg hover:scale-[1.03] transition-transform duration-300 cursor-pointer">
+          <h3 class="text-blue-400 font-semibold mb-2">Project 3</h3>
+          <p class="text-gray-300">Nothing to show yet.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section hidden max-w-4xl mx-auto space-y-8 zoom-animation" tabindex="0" aria-label="Achievements Section">
+      <h2 class="text-4xl font-extrabold text-blue-500 mb-8 select-text text-center">Achievements</h2>
+      <ul class="list-disc list-inside text-gray-300 text-lg space-y-3">
+        <li>Graduated at Datamex College of Saint Adeline Senior High School</li>
+        <li>NSTP Graduate 2025</li>
+        <li>Nothing else to show yet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black/90 backdrop-blur-md text-gray-300 py-6 mt-auto">
+    <div class="container max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>© 2025 Jera. All rights reserved.</div>
+      <div class="flex space-x-6 text-blue-500">
+        <a href="https://web.facebook.com/jera.inson" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-blue-400 transition-colors duration-300">
+          <!-- Facebook SVG Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.596 0 0 .593 0 1.326v21.348C0 23.406.596 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127v-2.672c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.324-.593 1.324-1.326V1.326C24 .593 23.404 0 22.675 0z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/jera.0_o/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-blue-400 transition-colors duration-300">
+          <!-- Instagram SVG Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.625a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation functionality
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.section');
+
+    function activateSection(targetId) {
+      sections.forEach((section) => {
+        if (section.id === targetId) {
+          section.classList.remove('hidden');
+          // Trigger zoom animation class - reflow to restart animation
+          section.classList.remove('zoom-animation');
+          void section.offsetWidth;
+          section.classList.add('zoom-animation');
+          section.setAttribute('tabindex', '0');
+          section.focus();
+        } else {
+          section.classList.add('hidden');
+          section.removeAttribute('tabindex');
+        }
+      });
+
+      navButtons.forEach((btn) => {
+        if (btn.dataset.target === targetId) {
+          btn.classList.add('nav-btn-active');
+          btn.setAttribute('aria-current', 'page');
+        } else {
+          btn.classList.remove('nav-btn-active');
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    navButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activateSection(btn.dataset.target);
+      });
+    });
+
+    // Initialize default section
+    activateSection('home');
+
+    function sendViaGmail(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const subject = encodeURIComponent("New message from your portfolio site");
+    const body = encodeURIComponent(`Hi Jerahhami,\n\nYou have a new message:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=jerahhami@gmail.com&su=${subject}&body=${body}`;
+
+    window.open(gmailURL, '_blank');
+  }
+  </script>
+</body>
+</html>
+
